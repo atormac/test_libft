@@ -12,7 +12,6 @@ void print_error(const char *msg)
 
 int	test_split(void)
 {
-	int i = 0;
 	char **arr = ft_split("  word start ex  ", ' ');
 	if (!arr)
 		return (0);
@@ -32,6 +31,7 @@ int	test_split(void)
 	free(arr);
 	return (1);
 }
+
 int test_atoi(void)
 {
 	const char *str = "\n +12352626";
