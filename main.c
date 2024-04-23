@@ -53,9 +53,9 @@ int test_itoa(void)
 
 int test_calloc(void)
 {
-	void *ptr = ft_calloc(5, 100);
-	void *ptr2 = calloc(5, 100);
-	if (memcmp(ptr, ptr2, 5 * 100)) 
+	void *ptr = ft_calloc(10, 100);
+	void *ptr2 = calloc(10, 100);
+	if (memcmp(ptr, ptr2, 10 * 100)) 
 		return (0);
 	free(ptr);
 	free(ptr2);
@@ -156,8 +156,13 @@ int test_strnstr(void)
 	const char *haystack = "haystackstrngsada";
 	const char *needle = "str";
 
-	if (ft_strnstr(haystack, needle, sizeof(haystack) - 1) !=
-		strnstr(haystack, needle, sizeof(haystack) - 1))
+	char *s1 = ft_strnstr(haystack, needle, sizeof(haystack) - 1);
+	char *s2 = strnstr(haystack, needle, sizeof(haystack) - 1);
+	if (s1 != s2)
+		return (0);
+	s1 = ft_strnstr(haystack, needle, 10);
+	s2 = strnstr(haystack, needle, 10);
+	if (s1 != s2)
 		return (0);
 	return (1);
 }
