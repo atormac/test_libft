@@ -148,6 +148,15 @@ int test_strdup(void)
 	return (1);
 }
 
+int	test_strncmp(void)
+{
+	const char *s1 = "stringtocompare";
+	if (strncmp(s1, s1, sizeof(s1) - 3) != ft_strncmp(s1, s1, sizeof(s1) - 3))
+		return (0);
+	if (ft_strncmp("\200", "\0", 1) <= 0)
+		return (0);
+	return (1);
+}
 int test_strlcpy()
 {
 	char buf[256];
@@ -313,6 +322,8 @@ int main(void)
 		print_error("strrchr");
 	if (!test_strnstr())
 		print_error("strnstr");
+	if (!test_strncmp())
+		print_error("strncmp");
 	if (!test_strlcpy())
 		print_error("strlcpy");
 	if (!test_strlcat())
