@@ -25,6 +25,11 @@ int	test_split(void)
 	if (arr[3] != NULL)
 		return (0);
 	free(arr);
+	arr = NULL;
+	arr = ft_split("", ' ');
+	if (!arr || arr[0] != NULL)
+		return (0);
+	free(arr);
 	return (1);
 }
 int test_atoi(void)
@@ -166,6 +171,39 @@ int test_strlcat()
 	return (1);
 }
 
+int test_memcmp()
+{
+	char buf[256] = { 0 };
+	char buf2[256] = { 0 };
+	memset(buf2 + 32, 'C', 10);
+	memset(buf + 64, 'C', 10);
+	if (memcmp(buf, buf2, 256) != ft_memcmp(buf, buf2, 256))
+		return (0);
+	return (1);
+}
+
+int test_memset()
+{
+	char buf[256] = { 0 };
+	char buf2[256] = { 0 };
+	memset(buf2, 'B', 256);
+	ft_memset(buf, 'B', 256);
+	if (memcmp(buf, buf2, 256) != 0)
+		return (0);
+	return (1);
+}
+
+int test_memcpy()
+{
+	char buf[256] = { 0 };
+	char buf2[256];
+	memset(buf2, 'c', 256);
+	ft_memcpy(buf, buf2, 256);
+	if (memcmp(buf, buf2, 256) != 0)
+		return (0);
+	return (1);
+}
+
 int test_strnstr(void)
 {
 	const char *haystack = "haystackstrngsada";
@@ -180,6 +218,18 @@ int test_strnstr(void)
 	if (s1 != s2)
 		return (0);
 	return (1);
+}
+
+/*
+ * BONUS TESTS
+ */
+
+int bonus_flag = 0;
+
+void bonus_del(void *p)
+{
+	(void)p;
+	bonus_flag++;
 }
 
 int bonus_cmp_list(t_list *lst)
@@ -199,20 +249,7 @@ int bonus_cmp_list(t_list *lst)
 		lst = lst->next;
 		i++;
 	}
-
 	return (1);
-}
-
-/*
- * BONUS TESTS
- */
-
-int bonus_flag = 0;
-
-void bonus_del(void *p)
-{
-	(void)p;
-	bonus_flag++;
 }
 
 int test_bonus(void)
@@ -242,6 +279,12 @@ int test_bonus(void)
 
 int main(void)
 {
+	if (!test_memset())
+		print_error("memset");
+	if (!test_memcpy())
+		print_error("memcpy");
+	if (!test_memcmp())
+		print_error("memcmp");
 	if (!test_calloc())
 		print_error("calloc");
 	if (!test_strdup())
