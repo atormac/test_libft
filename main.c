@@ -31,9 +31,15 @@ int test_atoi(void)
 {
 	const char *str = "\n +12352626";
 	const char *str2 = "\v\n -9929112";
+	const char *str3 = "19919913186978492019976868859150";
+	const char *str4 = "-99919913186978492019976868859150";
 	if (atoi(str) != ft_atoi(str))
 		return (0);
 	if (atoi(str2) != ft_atoi(str2))
+		return (0);
+	if (atoi(str3) != ft_atoi(str3))
+		return (0);
+	if (atoi(str4) != ft_atoi(str4))
 		return (0);
 	return (1);
 }
