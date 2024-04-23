@@ -100,6 +100,10 @@ int	test_strjoin(void)
 	if (strcmp(joined, "join1join25151") != 0)
 		return (0);
 	free(joined);
+	joined = ft_strjoin("", "");
+	if (strcmp(joined, "") != 0)
+		return (0);
+	free(joined);
 	return (1);
 }
 
