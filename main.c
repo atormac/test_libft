@@ -157,6 +157,7 @@ int	test_strncmp(void)
 		return (0);
 	return (1);
 }
+
 int test_strlcpy()
 {
 	char buf[256];
@@ -222,6 +223,21 @@ int test_memcpy()
 	ft_memcpy(buf, buf2, 256);
 	if (memcmp(buf, buf2, 256) != 0)
 		return (0);
+	ft_memcpy(NULL, NULL, 5);
+	memcpy(NULL, NULL, 5);
+	return (1);
+}
+
+int test_memmove()
+{
+	char buf[256] = { 0 };
+	char buf2[256];
+	memset(buf2, 'c', 256);
+	ft_memmove(buf, buf2, 256);
+	if (memcmp(buf, buf2, 256) != 0)
+		return (0);
+	ft_memmove(NULL, NULL, 5);
+	memmove(NULL, NULL, 5);
 	return (1);
 }
 
@@ -304,6 +320,8 @@ int main(void)
 		print_error("memset");
 	if (!test_memcpy())
 		print_error("memcpy");
+	if (!test_memmove())
+		print_error("memmove");
 	if (!test_memcmp())
 		print_error("memcmp");
 	if (!test_calloc())
