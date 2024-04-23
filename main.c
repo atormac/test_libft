@@ -168,6 +168,10 @@ int test_strlcat()
 		return (0);
 	if (memcmp(buf, buf2, 256) != 0)
 		return (0);
+	if (ft_strlcat(buf, "AAAAAAAAA", 6) != strlcat(buf2, "AAAAAAAAA", 6))
+		return (0);
+	if (memcmp(buf, buf2, 256) != 0)
+		return (0);
 	return (1);
 }
 
