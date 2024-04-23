@@ -99,6 +99,11 @@ int	test_strtrim(void)
 	char *s = ft_strtrim("strabcsttr", "str");
 	if (strcmp(s, "abc") != 0)
 		return (0);
+	free(s);
+	s = ft_strtrim("strstr", "str");
+	if (strcmp(s, "") != 0)
+		return (0);
+	free(s);
 	return (1);
 }
 
