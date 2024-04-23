@@ -48,12 +48,16 @@ int test_itoa(void)
 {
 	char *s1 = ft_itoa(-1245186919); 
 	char *s2 = ft_itoa(5186919); 
+	char *s3 = ft_itoa(INT_MIN); 
 	if (strcmp(s1, "-1245186919") != 0)
 		return (0);
 	if (strcmp(s2, "5186919") != 0)
 		return (0);
+	if (strcmp(s3, "-2147483648") != 0)
+		return (0);
 	free(s1);
 	free(s2);
+	free(s3);
 	return (1);
 }
 
@@ -207,6 +211,7 @@ int bonus_flag = 0;
 
 void bonus_del(void *p)
 {
+	(void)p;
 	bonus_flag++;
 }
 
